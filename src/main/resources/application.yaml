@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/RameshMF/config-server-repo
+          uri: https://github.com/winnguyen1905/config-server
           clone-on-start: true
           default-label: main
 
@@ -14,7 +14,8 @@ server:
   port: 8888
 
 eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
   instance:
-    client:
-      serverUrl:
-        defaultZone: http://localhost:8761/eureka/
+    instance-id: ${spring.application.name}:${random.value}
