@@ -44,25 +44,25 @@ spring:
             - Path=/products/**, /discount/**, /inventories/**, /variations/**
           filters:
             - PrefixPath=/api
-            
-        - id: ecommerce-product
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/product/**, /category/**, /admin/**, /inventory/**, /brand/**
-          filters:
-            - PrefixPath=/api
-        - id: ecommerce-cart
-          uri: http://localhost:8082/
-          predicates:
-            - Path=/cart/**
-          filters:
-            - PrefixPath=/api
-        - id: ecommerce-order
-          uri: http://localhost:8083/
-          predicates:
-            - Path=/order/**, /stripe/**
-          filters:
-            - PrefixPath=/api
+  
+        # - id: ecommerce-product
+        #   uri: http://localhost:8081/
+        #   predicates:
+        #     - Path=/product/**, /category/**, /admin/**, /inventory/**, /brand/**
+        #   filters:
+        #     - PrefixPath=/api
+        # - id: ecommerce-cart
+        #   uri: http://localhost:8082/
+        #   predicates:
+        #     - Path=/cart/**
+        #   filters:
+        #     - PrefixPath=/api
+        # - id: ecommerce-order
+        #   uri: http://localhost:8083/
+        #   predicates:
+        #     - Path=/order/**, /stripe/**
+        #   filters:
+        #     - PrefixPath=/api
 
   main:
     web-application-type: reactive
