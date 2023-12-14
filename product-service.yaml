@@ -21,7 +21,7 @@ spring:
     url: jdbc:mysql://localhost:3306/ecommerce
     username: root
     password: 2905
- rabbitmq:
+  rabbitmq:
     host: localhost          # RabbitMQ host (localhost if running on the same machine)
     port: 5672               # Default RabbitMQ port
     username: guest          # Default RabbitMQ username
