@@ -42,9 +42,9 @@ spring:
         - id: PRODUCT-SERVICE
           uri: lb://PRODUCT-SERVICE
           predicates:
-            - Path=/products/**, /discount/**, /inventories/**, /variations/**
-          filters:
-            - PrefixPath=/api
+            - Path=/api/products/**, /discount/**, /inventories/**, /variations/**
+          # filters:
+          #   - PrefixPath=/api
          
   
         # - id: ecommerce-product
