@@ -2,9 +2,7 @@ server:
   port: 8080
   error:
     include-message: never
-  servlet:
-webflux:
-      base-path: /api
+
 
 management:
   endpoint:
@@ -19,6 +17,8 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
 
 spring:
+  webflux:
+    base-path: /api
   application:
     name: GATEWAY-SERVICE
     allow-bean-definition-overriding: true
