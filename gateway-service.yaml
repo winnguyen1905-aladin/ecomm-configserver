@@ -3,7 +3,8 @@ server:
   error:
     include-message: never
   servlet:
-      context-path: /api
+webflux:
+      base-path: /api
 
 management:
   endpoint:
