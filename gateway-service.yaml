@@ -40,7 +40,7 @@ spring:
     gateway:
       routes:
         - id: PRODUCT-SERVICE
-          uri: http://localhost:8080/
+          uri: http://localhost:8090/
           predicates:
             - Path=/products/**, /discount/**, /inventories/**, /variations/**
           # filters:
