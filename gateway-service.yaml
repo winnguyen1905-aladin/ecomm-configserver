@@ -42,7 +42,7 @@ spring:
         - id: PRODUCT-SERVICE
           uri: http://localhost:8080/
           predicates:
-            - Path=/api/products/**, /discount/**, /inventories/**, /variations/**
+            - Path=/products/**, /discount/**, /inventories/**, /variations/**
           # filters:
           #   - PrefixPath=/api
          
