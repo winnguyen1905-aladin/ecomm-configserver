@@ -43,8 +43,8 @@ spring:
           uri: http://localhost:8090/
           predicates:
             - Path=/products/**, /discount/**, /inventories/**, /variations/**
-          # filters:
-          #   - PrefixPath=/api
+          filters:
+            - PrefixPath=/api
          
   
         # - id: ecommerce-product
