@@ -2,8 +2,8 @@ server:
   port: 8090
   error:
     include-message: never
-  servlet:
-      context-path: /api 
+  # servlet:
+  #     context-path: /api 
 
 eureka:
   client:
