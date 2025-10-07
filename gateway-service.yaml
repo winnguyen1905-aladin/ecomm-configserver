@@ -17,8 +17,8 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
 
 spring:
-  webflux:
-    base-path: /api
+  # webflux:
+  #   base-path: /api
   application:
     name: GATEWAY-SERVICE
     allow-bean-definition-overriding: true
@@ -40,11 +40,11 @@ spring:
     gateway:
       routes:
         - id: PRODUCT-SERVICE
-          uri: http://localhost:8090/
+          uri: lb:PRODUCT-SERVICE
           predicates:
             - Path=/products/**, /discount/**, /inventories/**, /variations/**
-          filters:
-            - PrefixPath=/api
+          # filters:
+          #   - PrefixPath=/api
          
   
         # - id: ecommerce-product
