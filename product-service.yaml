@@ -1,13 +1,9 @@
 server:
-  port: 9191
+  port: 8090
   error:
     include-message: never
-
-
-management:
-  endpoint:
-    gateway:
-      enabled: true
+  # servlet:
+  #     context-path: /api 
 
 eureka:
   client:
@@ -17,11 +13,14 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
 
 spring:
-  # webflux:
-  #   base-path: /api
   application:
-    name: GATEWAY-SERVICE
+    name: PRODUCT-SERVICE
+  main:
     allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: 2905
   rabbitmq:
     host: localhost          # RabbitMQ host (localhost if running on the same machine)
     port: 5672               # Default RabbitMQ port
@@ -35,51 +34,21 @@ spring:
           initial-interval: 1000 # Initial retry interval in milliseconds
           max-attempts: 5     # Maximum number of retry attempts
         acknowledge-mode: auto # Auto acknowledgment of messages
+  elasticsearch:
+    uris: http://localhost:9200
+    password: changeme
+    username: elastic
+    connection-timeout: 5s
 
-  cloud:
-    gateway:
-      routes:
-        - id: PRODUCT-SERVICE
-          uri: lb:PRODUCT-SERVICE
-          predicates:
-            - Path=/products/**, /discount/**, /inventories/**, /variations/**
-          # filters:
-          #   - PrefixPath=/api
-         
-  
-        # - id: ecommerce-product
-        #   uri: http://localhost:8081/
-        #   predicates:
-        #     - Path=/product/**, /category/**, /admin/**, /inventory/**, /brand/**
-        #   filters:
-        #     - PrefixPath=/api
-        # - id: ecommerce-cart
-        #   uri: http://localhost:8082/
-        #   predicates:
-        #     - Path=/cart/**
-        #   filters:
-        #     - PrefixPath=/api
-        # - id: ecommerce-order
-        #   uri: http://localhost:8083/
-        #   predicates:
-        #     - Path=/order/**, /stripe/**
-        #   filters:
-        #     - PrefixPath=/api
-
-  main:
-    web-application-type: reactive
-  datasource:
-    url: jdbc:mysql://localhost:3306/ecommerce
-    username: root
-    password: 2905
 
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+      
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -106,7 +75,7 @@ spring:
   sql:
     init:
       mode: always
-  
+      
 jwt:
   base64-secret: hl4gDqBxBgOSDWqBlvwFYQInjYRGAdS4lUT7Nf3Zk1nItoSQ9wSFDPU+kXHKcKUW/UKbpGv9bCsa9S/QsoFRHw==
   access_token-validity-in-seconds: 90000000
